@@ -112,4 +112,6 @@ elseif(SKUI_USE_SYSTEM_BOOST)
 endif()
 
 # For those not requested or found as prebuilt or system libraries
-add_subdirectory(3rdparty)
+if (NOT SKUI_USE_IMX8)
+  add_subdirectory(3rdparty)
+endif ()
