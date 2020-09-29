@@ -24,6 +24,30 @@
 
 include_guard(GLOBAL)
 
+if(SKUI_USE_IMX8)
+    set(CMAKE_C_COMPILER /work/android-toolchain/arm64/bin/clang)
+    set(CMAKE_CXX_COMPILER /work/android-toolchain/arm64/bin/clang++)
+    message("CMAKE_C_COMPILER:" ${CMAKE_C_COMPILER})
+    message("CMAKE_CXX_COMPILER:" ${CMAKE_CXX_COMPILER})
+
+    include_directories(common/include)
+    include_directories(common/include/skia)
+    include_directories(common/include/skia/include)
+    include_directories(common/include/skia/include/config)
+    include_directories(common/include/skia/include/core)
+    include_directories(common/include/skia/include/codec)
+    include_directories(common/include/skia/include/gpu)
+    include_directories(common/include/skia/include/gpu/vk)
+    include_directories(common/include/skia/include/android)
+    include_directories(common/include/skia/include/config/android)
+    include_directories(common/include/skia/include/private)
+    include_directories(common/include/skia/include/utils)
+    include_directories(common/include/skia/include/effects)
+    include_directories(common/include/skia/include/third_party/vulkan)
+    include_directories(common/include/skia/include/gpu/gl)
+    return()
+endif()
+
 # Compiler options
 if(CMAKE_COMPILER_IS_GNUCXX)
   set(CMAKE_CXX_FLAGS "-pedantic-errors -Wextra -Wconversion -Winit-self -Wmissing-include-dirs -Wstrict-aliasing -Werror ${CMAKE_CXX_FLAGS}")
